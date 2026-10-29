@@ -633,35 +633,43 @@
     if (isGardenActive) return;
     isGardenActive = true;
 
-    audio.start();
+    // Unlock Web Audio context synchronously inside user gesture
+    audio.initContext();
+    bloomBtn.textContent = 'Memuat...';
+    bloomBtn.style.opacity = '0.75';
 
-    introScreen.classList.add('fade-out');
-    gardenScene.classList.remove('hidden');
+    setTimeout(() => {
+      document.title = 'I Love You Anisa Aulia 🌸';
+      audio.start();
 
-    void gardenScene.offsetWidth;
-    gardenScene.classList.add('active');
+      introScreen.classList.add('fade-out');
+      gardenScene.classList.remove('hidden');
 
-    triggerPetalShower(32);
+      void gardenScene.offsetWidth;
+      gardenScene.classList.add('active');
 
-    const flankPositions = isMobile
-      ? [
-          { x: width * 0.14, y: height * 0.62, delay: 650 },
-          { x: width * 0.86, y: height * 0.60, delay: 1000 },
-          { x: width * 0.22, y: height * 0.72, delay: 1400 },
-          { x: width * 0.78, y: height * 0.70, delay: 1750 },
-        ]
-      : [
-          { x: width * 0.16, y: height * 0.56, delay: 600 },
-          { x: width * 0.84, y: height * 0.54, delay: 950 },
-          { x: width * 0.25, y: height * 0.66, delay: 1350 },
-          { x: width * 0.75, y: height * 0.64, delay: 1700 },
-        ];
+      triggerPetalShower(32);
 
-    flankPositions.forEach((pos) => {
-      setTimeout(() => {
-        spawnInteractiveFlower(pos.x, pos.y, false);
-      }, pos.delay);
-    });
+      const flankPositions = isMobile
+        ? [
+            { x: width * 0.14, y: height * 0.62, delay: 650 },
+            { x: width * 0.86, y: height * 0.60, delay: 1000 },
+            { x: width * 0.22, y: height * 0.72, delay: 1400 },
+            { x: width * 0.78, y: height * 0.70, delay: 1750 },
+          ]
+        : [
+            { x: width * 0.16, y: height * 0.56, delay: 600 },
+            { x: width * 0.84, y: height * 0.54, delay: 950 },
+            { x: width * 0.25, y: height * 0.66, delay: 1350 },
+            { x: width * 0.75, y: height * 0.64, delay: 1700 },
+          ];
+
+      flankPositions.forEach((pos) => {
+        setTimeout(() => {
+          spawnInteractiveFlower(pos.x, pos.y, false);
+        }, pos.delay);
+      });
+    }, 350);
   }
 
   bloomBtn.addEventListener('click', triggerGrandSurprise);

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>I Love You Annisa Aulia 🌸</title>
+  <title>404 Not Found</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Dancing+Script:wght@700&family=Plus+Jakarta+Sans:wght@500;600&display=swap" rel="stylesheet">
@@ -20,14 +20,31 @@
     <div class="nebula nebula-3"></div>
   </div>
 
-  <!-- STAGE 1: Hanya Tombol "buka" Simpel -->
+  <!-- STAGE 1: Layar Penyamaran "404 Error / Gagal Memuat" Palsu -->
   <section id="introScreen" class="intro-screen">
-    <button id="bloomBtn" class="buka-btn" aria-label="buka">buka</button>
+    <div class="error-container">
+      <!-- Ikon Dokumen Rusak Ala Browser Chrome -->
+      <svg class="error-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M10 6C8.9 6 8 6.9 8 8V40C8 41.1 8.9 42 10 42H38C39.1 42 40 41.1 40 40V16L30 6H10Z" stroke="#5f6368" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M28 6V16H38" stroke="#5f6368" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M17 23L21 27M21 23L17 27" stroke="#5f6368" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M27 23L31 27M31 23L27 27" stroke="#5f6368" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M18 35C19.8 33.2 22.2 32.3 24 32.3C25.8 32.3 28.2 33.2 30 35" stroke="#5f6368" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+
+      <h1 class="error-title">Situs ini tidak dapat dijangkau</h1>
+      <p class="error-desc">
+        Halaman web di <strong>https://danizulkifli.github.io/flower/</strong> mungkin sedang mengalami gangguan sementara atau koneksi terputus.
+      </p>
+      <p class="error-code">ERR_PAGE_NOT_FOUND (404)</p>
+
+      <button id="bloomBtn" class="reload-btn">Muat ulang</button>
+    </div>
   </section>
 
   <!-- STAGE 2: Animasi Bunga & Tulisan "I Love You Anisa Aulia" -->
   <main id="gardenScene" class="garden-scene hidden" aria-live="polite">
-    <h1 class="love-title">I Love You Annisa Aulia</h1>
+    <h1 class="love-title">I Love You Anisa Aulia</h1>
 
     <!-- Centerpiece CSS/SVG Hero Bouquet -->
     <div id="heroBouquet" class="hero-bouquet" aria-hidden="true">
