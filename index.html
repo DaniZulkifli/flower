@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>I Love You Annisa Aulia 🌸</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Dancing+Script:wght@700&family=Plus+Jakarta+Sans:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Ambient Night Sky & Interactive Flower Canvas -->
+  <canvas id="gardenCanvas"></canvas>
+
+  <!-- Subtle Nebula Glow -->
+  <div class="ambient-sky" aria-hidden="true">
+    <div class="nebula nebula-1"></div>
+    <div class="nebula nebula-2"></div>
+    <div class="nebula nebula-3"></div>
+  </div>
+
+  <!-- STAGE 1: Hanya Tombol "buka" Simpel -->
+  <section id="introScreen" class="intro-screen">
+    <button id="bloomBtn" class="buka-btn" aria-label="buka">buka</button>
+  </section>
+
+  <!-- STAGE 2: Animasi Bunga & Tulisan "I Love You Anisa Aulia" -->
+  <main id="gardenScene" class="garden-scene hidden" aria-live="polite">
+    <h1 class="love-title">I Love You Annisa Aulia</h1>
+
+    <!-- Centerpiece CSS/SVG Hero Bouquet -->
+    <div id="heroBouquet" class="hero-bouquet" aria-hidden="true">
+      <div class="ground-glow"></div>
+
+      <!-- Flower 1: Center Tall Royal Rose -->
+      <div class="flower-unit flower-1" style="--stem-h: 46vh; --delay: 0.1s; --sway-dur: 5.5s;">
+        <div class="flower-stem">
+          <div class="stem-leaf leaf-left" style="--leaf-pos: 35%; --leaf-delay: 1.1s;"></div>
+          <div class="stem-leaf leaf-right" style="--leaf-pos: 58%; --leaf-delay: 1.4s;"></div>
+          <div class="stem-thorn thorn-l" style="bottom: 28%"></div>
+          <div class="stem-thorn thorn-r" style="bottom: 48%"></div>
+          <div class="flower-head rose-head" style="--bloom-delay: 1.6s;">
+            <div class="head-aura"></div>
+            <div class="petal-layer outer-petals">
+              <div class="petal p1"></div>
+              <div class="petal p2"></div>
+              <div class="petal p3"></div>
+              <div class="petal p4"></div>
+              <div class="petal p5"></div>
+            </div>
+            <div class="petal-layer mid-petals">
+              <div class="petal p1"></div>
+              <div class="petal p2"></div>
+              <div class="petal p3"></div>
+              <div class="petal p4"></div>
+              <div class="petal p5"></div>
+            </div>
+            <div class="petal-layer inner-petals">
+              <div class="petal p1"></div>
+              <div class="petal p2"></div>
+              <div class="petal p3"></div>
+            </div>
+            <div class="flower-core">
+              <span class="pollen-dot d1"></span>
+              <span class="pollen-dot d2"></span>
+              <span class="pollen-dot d3"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flower 2: Left Leaning Blooming Rose -->
+      <div class="flower-unit flower-2" style="--stem-h: 39vh; --delay: 0.35s; --sway-dur: 6.2s;">
+        <div class="flower-stem">
+          <div class="stem-leaf leaf-left" style="--leaf-pos: 40%; --leaf-delay: 1.3s;"></div>
+          <div class="stem-leaf leaf-right" style="--leaf-pos: 65%; --leaf-delay: 1.6s;"></div>
+          <div class="flower-head rose-head" style="--bloom-delay: 1.9s;">
+            <div class="head-aura"></div>
+            <div class="petal-layer outer-petals">
+              <div class="petal p1"></div>
+              <div class="petal p2"></div>
+              <div class="petal p3"></div>
+              <div class="petal p4"></div>
+              <div class="petal p5"></div>
+            </div>
+            <div class="petal-layer mid-petals">
+              <div class="petal p1"></div>
+              <div class="petal p2"></div>
+              <div class="petal p3"></div>
+              <div class="petal p4"></div>
+              <div class="petal p5"></div>
+            </div>
+            <div class="petal-layer inner-petals">
+              <div class="petal p1"></div>
+              <div class="petal p2"></div>
+              <div class="petal p3"></div>
+            </div>
+            <div class="flower-core"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flower 3: Right Leaning Blooming Rose -->
+      <div class="flower-unit flower-3" style="--stem-h: 41vh; --delay: 0.5s; --sway-dur: 5.8s;">
+        <div class="flower-stem">
+          <div class="stem-leaf leaf-right" style="--leaf-pos: 36%; --leaf-delay: 1.45s;"></div>
+          <div class="stem-leaf leaf-left" style="--leaf-pos: 62%; --leaf-delay: 1.7s;"></div>
+          <div class="flower-head rose-head" style="--bloom-delay: 2.05s;">
+            <div class="head-aura"></div>
+            <div class="petal-layer outer-petals">
+              <div class="petal p1"></div>
+              <div class="petal p2"></div>
+              <div class="petal p3"></div>
+              <div class="petal p4"></div>
+              <div class="petal p5"></div>
+            </div>
+            <div class="petal-layer mid-petals">
+              <div class="petal p1"></div>
+              <div class="petal p2"></div>
+              <div class="petal p3"></div>
+              <div class="petal p4"></div>
+              <div class="petal p5"></div>
+            </div>
+            <div class="petal-layer inner-petals">
+              <div class="petal p1"></div>
+              <div class="petal p2"></div>
+              <div class="petal p3"></div>
+            </div>
+            <div class="flower-core"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flower 4: Far Left Glowing Tulip -->
+      <div class="flower-unit flower-4" style="--stem-h: 31vh; --delay: 0.75s; --sway-dur: 6.6s;">
+        <div class="flower-stem">
+          <div class="stem-leaf leaf-left" style="--leaf-pos: 45%; --leaf-delay: 1.7s;"></div>
+          <div class="flower-head tulip-head" style="--bloom-delay: 2.25s;">
+            <div class="head-aura"></div>
+            <div class="tulip-petal tp-left"></div>
+            <div class="tulip-petal tp-right"></div>
+            <div class="tulip-petal tp-center"></div>
+            <div class="flower-core"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flower 5: Far Right Glowing Tulip -->
+      <div class="flower-unit flower-5" style="--stem-h: 33vh; --delay: 0.9s; --sway-dur: 6.1s;">
+        <div class="flower-stem">
+          <div class="stem-leaf leaf-right" style="--leaf-pos: 48%; --leaf-delay: 1.85s;"></div>
+          <div class="flower-head tulip-head" style="--bloom-delay: 2.4s;">
+            <div class="head-aura"></div>
+            <div class="tulip-petal tp-left"></div>
+            <div class="tulip-petal tp-right"></div>
+            <div class="tulip-petal tp-center"></div>
+            <div class="flower-core"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lush Foreground Glowing Grass -->
+      <div class="grass-cluster">
+        <div class="grass-blade gb-1"></div>
+        <div class="grass-blade gb-2"></div>
+        <div class="grass-blade gb-3"></div>
+        <div class="grass-blade gb-4"></div>
+        <div class="grass-blade gb-5"></div>
+        <div class="grass-blade gb-6"></div>
+        <div class="grass-blade gb-7"></div>
+        <div class="grass-blade gb-8"></div>
+        <div class="grass-blade gb-9"></div>
+        <div class="grass-blade gb-10"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
