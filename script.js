@@ -13,6 +13,7 @@
   const introScreen = document.getElementById('introScreen');
   const bloomBtn = document.getElementById('bloomBtn');
   const gardenScene = document.getElementById('gardenScene');
+  const bgMusic = document.getElementById('bgMusic');
 
   let isGardenActive = false;
 
@@ -633,14 +634,17 @@
     if (isGardenActive) return;
     isGardenActive = true;
 
-    // Unlock Web Audio context synchronously inside user gesture
-    audio.initContext();
+    // Jalankan sound.mp3.mpeg langsung saat tombol diklik
+    if (bgMusic) {
+      bgMusic.currentTime = 0;
+      bgMusic.play().catch(() => {});
+    }
+
     bloomBtn.textContent = 'Memuat...';
     bloomBtn.style.opacity = '0.75';
 
     setTimeout(() => {
       document.title = 'I Love You Anisa Aulia 🌸';
-      audio.start();
 
       introScreen.classList.add('fade-out');
       gardenScene.classList.remove('hidden');
