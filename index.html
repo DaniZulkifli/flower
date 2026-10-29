@@ -22,7 +22,7 @@
 
   <!-- STAGE 1: Layar Penyamaran "404 Error / Gagal Memuat" Palsu -->
   <section id="introScreen" class="intro-screen">
-    <div class="error-container">
+    <div id="errorContainer" class="error-container">
       <!-- Ikon Dokumen Rusak Ala Browser Chrome -->
       <svg class="error-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path d="M10 6C8.9 6 8 6.9 8 8V40C8 41.1 8.9 42 10 42H38C39.1 42 40 41.1 40 40V16L30 6H10Z" stroke="#5f6368" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -40,11 +40,17 @@
 
       <button id="bloomBtn" class="reload-btn">Muat ulang</button>
     </div>
+
+    <!-- Indikator Loading di Tengah Layar -->
+    <div id="loadingIndicator" class="loading-indicator hidden" aria-live="polite">
+      <div class="spinner"></div>
+      <p class="loading-text">Memuat halaman...</p>
+    </div>
   </section>
 
-  <!-- STAGE 2: Animasi Bunga & Tulisan "I Love You Anisa Aulia" -->
+  <!-- STAGE 2: Animasi Bunga & Tulisan "I Love You Annisa Aulia" -->
   <main id="gardenScene" class="garden-scene hidden" aria-live="polite">
-    <h1 class="love-title">I Love You Anisa Aulia</h1>
+    <h1 class="love-title">I Love You Annisa Aulia</h1>
 
     <!-- Centerpiece CSS/SVG Hero Bouquet -->
     <div id="heroBouquet" class="hero-bouquet" aria-hidden="true">
