@@ -634,7 +634,7 @@
     if (isGardenActive) return;
     isGardenActive = true;
 
-    // Jalankan sound.mp3.mpeg langsung saat tombol diklik
+    // Jalankan sound.mp3 langsung saat tombol diklik
     if (bgMusic) {
       bgMusic.currentTime = 0;
       bgMusic.play().catch(() => {});
@@ -643,6 +643,7 @@
     bloomBtn.textContent = 'Memuat...';
     bloomBtn.style.opacity = '0.75';
 
+    // Bunga mekar 5 detik (5000ms) setelah tombol diklik
     setTimeout(() => {
       document.title = 'I Love You Anisa Aulia 🌸';
 
@@ -673,7 +674,7 @@
           spawnInteractiveFlower(pos.x, pos.y, false);
         }, pos.delay);
       });
-    }, 350);
+    }, 5000);
   }
 
   bloomBtn.addEventListener('click', triggerGrandSurprise);
