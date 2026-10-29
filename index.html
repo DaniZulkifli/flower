@@ -41,10 +41,26 @@
       <button id="bloomBtn" class="reload-btn">Muat ulang</button>
     </div>
 
-    <!-- Indikator Loading di Tengah Layar -->
-    <div id="loadingIndicator" class="loading-indicator hidden" aria-live="polite">
-      <div class="spinner"></div>
-      <p class="loading-text">Memuat halaman...</p>
+    <!-- Lirik Intro Sinkron & Kartu Polaroid di Tengah Layar -->
+    <div id="lyricIntro" class="lyric-intro hidden" aria-live="polite">
+      <div class="polaroid-stack">
+        <div class="polaroid-card card-1" id="polaroid1">
+          <div class="polaroid-img-wrap">
+            <img src="foto1.jpg" alt="" onerror="if(!this.dataset.t){this.dataset.t='1';this.src='foto1.jpeg'}else if(this.dataset.t==='1'){this.dataset.t='2';this.src='foto1.png'}" />
+          </div>
+        </div>
+        <div class="polaroid-card card-2" id="polaroid2">
+          <div class="polaroid-img-wrap">
+            <img src="foto2.jpg" alt="" onerror="if(!this.dataset.t){this.dataset.t='1';this.src='foto2.jpeg'}else if(this.dataset.t==='1'){this.dataset.t='2';this.src='foto2.png'}" />
+          </div>
+        </div>
+        <div class="polaroid-card card-3" id="polaroid3">
+          <div class="polaroid-img-wrap">
+            <img src="foto3.jpg" alt="" onerror="if(!this.dataset.t){this.dataset.t='1';this.src='foto3.jpeg'}else if(this.dataset.t==='1'){this.dataset.t='2';this.src='foto3.png'}" />
+          </div>
+        </div>
+      </div>
+      <p id="lyricText" class="lyric-text"></p>
     </div>
   </section>
 

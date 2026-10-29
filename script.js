@@ -12,7 +12,11 @@
 
   const introScreen = document.getElementById('introScreen');
   const errorContainer = document.getElementById('errorContainer');
-  const loadingIndicator = document.getElementById('loadingIndicator');
+  const lyricIntro = document.getElementById('lyricIntro');
+  const lyricText = document.getElementById('lyricText');
+  const polaroid1 = document.getElementById('polaroid1');
+  const polaroid2 = document.getElementById('polaroid2');
+  const polaroid3 = document.getElementById('polaroid3');
   const bloomBtn = document.getElementById('bloomBtn');
   const gardenScene = document.getElementById('gardenScene');
   const bgMusic = document.getElementById('bgMusic');
@@ -630,8 +634,17 @@
   }
 
   // ============================================================================
-  // 3. SURPRISE CHOREOGRAPHY
+  // 3. SURPRISE CHOREOGRAPHY & SYNCHRONIZED LYRIC INTRO
   // ============================================================================
+  function showLyricLine(text) {
+    if (!lyricText) return;
+    lyricText.classList.remove('visible');
+    setTimeout(() => {
+      lyricText.textContent = text;
+      lyricText.classList.add('visible');
+    }, 180);
+  }
+
   function triggerGrandSurprise() {
     if (isGardenActive) return;
     isGardenActive = true;
@@ -642,12 +655,28 @@
       bgMusic.play().catch(() => {});
     }
 
-    // Tampilkan indikator loading di tengah layar
+    // Masuk ke mode lirik intro di tengah layar
+    introScreen.classList.add('lyric-mode');
     if (errorContainer) errorContainer.classList.add('hidden');
-    if (loadingIndicator) loadingIndicator.classList.remove('hidden');
+    if (lyricIntro) lyricIntro.classList.remove('hidden');
 
-    // Bunga mekar 5 detik (5000ms) setelah tombol diklik
+    // Lirik & Kartu Polaroid sinkron dengan intro sound.mp3 (0.0s - 5.5s)
+    showLyricLine('Just between us...');
+    if (polaroid1) polaroid1.classList.add('show');
+
     setTimeout(() => {
+      showLyricLine('I remember it...');
+      if (polaroid2) polaroid2.classList.add('show');
+    }, 2100);
+
+    setTimeout(() => {
+      showLyricLine('All too well...');
+      if (polaroid3) polaroid3.classList.add('show');
+    }, 4400);
+
+    // Saat beat drop (5.5 detik), lirik hilang & halaman animasi bunga mekar muncul
+    setTimeout(() => {
+      if (lyricText) lyricText.classList.remove('visible');
       introScreen.classList.add('fade-out');
       gardenScene.classList.remove('hidden');
 
@@ -675,7 +704,7 @@
           spawnInteractiveFlower(pos.x, pos.y, false);
         }, pos.delay);
       });
-    }, 5000);
+    }, 5500);
   }
 
   bloomBtn.addEventListener('click', triggerGrandSurprise);
