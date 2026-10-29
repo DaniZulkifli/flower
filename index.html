@@ -7,6 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Dancing+Script:wght@700&family=Plus+Jakarta+Sans:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="foto1.jpeg" />
+  <link rel="preload" as="image" href="foto2.jpeg" />
+  <link rel="preload" as="image" href="foto3.jpeg" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -41,22 +44,29 @@
       <button id="bloomBtn" class="reload-btn">Muat ulang</button>
     </div>
 
+    <!-- Hitung Mundur Transisi (3.. 2.. 1..) -->
+    <div id="countdownBox" class="countdown-box hidden" aria-live="polite">
+      <div class="countdown-ring">
+        <span id="countdownNum" class="countdown-num">3</span>
+      </div>
+    </div>
+
     <!-- Lirik Intro Sinkron & Kartu Polaroid di Tengah Layar -->
     <div id="lyricIntro" class="lyric-intro hidden" aria-live="polite">
       <div class="polaroid-stack">
         <div class="polaroid-card card-1" id="polaroid1">
           <div class="polaroid-img-wrap">
-            <img src="foto1.jpg" alt="" onerror="if(!this.dataset.t){this.dataset.t='1';this.src='foto1.jpeg'}else if(this.dataset.t==='1'){this.dataset.t='2';this.src='foto1.png'}" />
+            <img src="foto1.jpeg" alt="" />
           </div>
         </div>
         <div class="polaroid-card card-2" id="polaroid2">
           <div class="polaroid-img-wrap">
-            <img src="foto2.jpg" alt="" onerror="if(!this.dataset.t){this.dataset.t='1';this.src='foto2.jpeg'}else if(this.dataset.t==='1'){this.dataset.t='2';this.src='foto2.png'}" />
+            <img src="foto2.jpeg" alt="" />
           </div>
         </div>
         <div class="polaroid-card card-3" id="polaroid3">
           <div class="polaroid-img-wrap">
-            <img src="foto3.jpg" alt="" onerror="if(!this.dataset.t){this.dataset.t='1';this.src='foto3.jpeg'}else if(this.dataset.t==='1'){this.dataset.t='2';this.src='foto3.png'}" />
+            <img src="foto3.jpeg" alt="" />
           </div>
         </div>
       </div>
@@ -213,6 +223,8 @@
         <div class="grass-blade gb-10"></div>
       </div>
     </div>
+
+    <p id="touchHint" class="touch-hint">✨ Sentuh layar untuk menumbuhkan bunga</p>
   </main>
 
   <audio id="bgMusic" src="sound.mp3" preload="auto" loop></audio>

@@ -12,6 +12,8 @@
 
   const introScreen = document.getElementById('introScreen');
   const errorContainer = document.getElementById('errorContainer');
+  const countdownBox = document.getElementById('countdownBox');
+  const countdownNum = document.getElementById('countdownNum');
   const lyricIntro = document.getElementById('lyricIntro');
   const lyricText = document.getElementById('lyricText');
   const polaroid1 = document.getElementById('polaroid1');
@@ -19,6 +21,7 @@
   const polaroid3 = document.getElementById('polaroid3');
   const bloomBtn = document.getElementById('bloomBtn');
   const gardenScene = document.getElementById('gardenScene');
+  const touchHint = document.getElementById('touchHint');
   const bgMusic = document.getElementById('bgMusic');
 
   let isGardenActive = false;
@@ -649,68 +652,99 @@
     if (isGardenActive) return;
     isGardenActive = true;
 
-    // Jalankan sound.mp3 langsung saat tombol diklik
+    // Unlock audio di browser mobile secara senyap saat tombol diklik
     if (bgMusic) {
-      bgMusic.currentTime = 0;
-      bgMusic.play().catch(() => {});
+      bgMusic.muted = true;
+      bgMusic.play().then(() => {
+        bgMusic.pause();
+        bgMusic.currentTime = 0;
+        bgMusic.muted = false;
+      }).catch(() => {
+        bgMusic.muted = false;
+      });
     }
 
-    // Masuk ke mode lirik intro di tengah layar
+    // Masuk ke latar gelap & tampilkan hitung mundur 3.. 2.. 1..
     introScreen.classList.add('lyric-mode');
     if (errorContainer) errorContainer.classList.add('hidden');
-    if (lyricIntro) lyricIntro.classList.remove('hidden');
-
-    // Lirik & Kartu Polaroid sinkron dengan intro sound.mp3 (0.0s - 5.5s)
-    showLyricLine('Just between us...');
-    if (polaroid1) polaroid1.classList.add('show');
+    if (countdownBox) countdownBox.classList.remove('hidden');
+    if (countdownNum) countdownNum.textContent = '3';
 
     setTimeout(() => {
-      showLyricLine('I remember it...');
-      if (polaroid2) polaroid2.classList.add('show');
-    }, 2100);
+      if (countdownNum) countdownNum.textContent = '2';
+    }, 1000);
 
     setTimeout(() => {
-      showLyricLine('All too well...');
-      if (polaroid3) polaroid3.classList.add('show');
-    }, 4400);
+      if (countdownNum) countdownNum.textContent = '1';
+    }, 2000);
 
-    // Saat beat drop (5.5 detik), lirik hilang & halaman animasi bunga mekar muncul
+    // Setelah hitung mundur selesai (3 detik), mulai musik + Kartu Polaroid & Lirik
     setTimeout(() => {
-      if (lyricText) lyricText.classList.remove('visible');
-      introScreen.classList.add('fade-out');
-      gardenScene.classList.remove('hidden');
+      if (countdownBox) countdownBox.classList.add('hidden');
+      if (lyricIntro) {
+        lyricIntro.classList.remove('hidden');
+        void lyricIntro.offsetWidth;
+      }
 
-      void gardenScene.offsetWidth;
-      gardenScene.classList.add('active');
+      if (bgMusic) {
+        bgMusic.muted = false;
+        bgMusic.currentTime = 0;
+        bgMusic.play().catch(() => {});
+      }
 
-      triggerPetalShower(32);
+      // Lirik & Kartu Polaroid sinkron dengan intro sound.mp3 (0.0s - 5.5s)
+      showLyricLine('Just between us...');
+      if (polaroid1) polaroid1.classList.add('show');
 
-      const flankPositions = isMobile
-        ? [
-            { x: width * 0.14, y: height * 0.62, delay: 650 },
-            { x: width * 0.86, y: height * 0.60, delay: 1000 },
-            { x: width * 0.22, y: height * 0.72, delay: 1400 },
-            { x: width * 0.78, y: height * 0.70, delay: 1750 },
-          ]
-        : [
-            { x: width * 0.16, y: height * 0.56, delay: 600 },
-            { x: width * 0.84, y: height * 0.54, delay: 950 },
-            { x: width * 0.25, y: height * 0.66, delay: 1350 },
-            { x: width * 0.75, y: height * 0.64, delay: 1700 },
-          ];
+      setTimeout(() => {
+        showLyricLine('I remember it...');
+        if (polaroid2) polaroid2.classList.add('show');
+      }, 2100);
 
-      flankPositions.forEach((pos) => {
-        setTimeout(() => {
-          spawnInteractiveFlower(pos.x, pos.y, false);
-        }, pos.delay);
-      });
-    }, 5500);
+      setTimeout(() => {
+        showLyricLine('All too well...');
+        if (polaroid3) polaroid3.classList.add('show');
+      }, 4400);
+
+      // Saat beat drop (5.5 detik sejak lagu mulai), lirik hilang & bunga mekar
+      setTimeout(() => {
+        if (lyricText) lyricText.classList.remove('visible');
+        introScreen.classList.add('fade-out');
+        gardenScene.classList.remove('hidden');
+
+        void gardenScene.offsetWidth;
+        gardenScene.classList.add('active');
+
+        triggerPetalShower(32);
+
+        const flankPositions = isMobile
+          ? [
+              { x: width * 0.14, y: height * 0.62, delay: 650 },
+              { x: width * 0.86, y: height * 0.60, delay: 1000 },
+              { x: width * 0.22, y: height * 0.72, delay: 1400 },
+              { x: width * 0.78, y: height * 0.70, delay: 1750 },
+            ]
+          : [
+              { x: width * 0.16, y: height * 0.56, delay: 600 },
+              { x: width * 0.84, y: height * 0.54, delay: 950 },
+              { x: width * 0.25, y: height * 0.66, delay: 1350 },
+              { x: width * 0.75, y: height * 0.64, delay: 1700 },
+            ];
+
+        flankPositions.forEach((pos) => {
+          setTimeout(() => {
+            spawnInteractiveFlower(pos.x, pos.y, false);
+          }, pos.delay);
+        });
+      }, 5500);
+    }, 3000);
   }
 
   bloomBtn.addEventListener('click', triggerGrandSurprise);
 
   canvas.addEventListener('pointerdown', (e) => {
     if (!isGardenActive) return;
+    if (touchHint) touchHint.classList.add('hide');
     spawnInteractiveFlower(e.clientX, e.clientY, true);
   });
 
